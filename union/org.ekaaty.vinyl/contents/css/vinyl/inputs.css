@@ -1,0 +1,173 @@
+/* SPDX-License-Identifier: GPL-2.0-or-later */
+
+textfield,
+textarea,
+searchfield,
+spinbox {
+    padding: var(--vinyl-padding);
+    border-radius: var(--vinyl-radius);
+}
+
+/* LineEdit_FrameWidth is 5 + Frame_FrameWidth (2) in kstyle/vinyl.h.
+ * Widgets calculates its hint from the content padding; Quick also needs the
+ * minimum background height to match the native desktop TextField.
+ */
+textfield,
+searchfield {
+    padding: var(--vinyl-input-padding);
+    height: 33px;
+}
+
+/* Both outputs use stacked arrows at the trailing edge. Keep the constrained
+ * variant explicit: the Widgets output always adds this hint, while Qt Quick
+ * only adds it when space is limited.
+ */
+spinbox,
+spinbox.constrained {
+    height: 34px;
+    text-alignment: content start center 0;
+    margin: 0px;
+}
+
+spinbox > indicator,
+spinbox.constrained > indicator {
+    layout-alignment: item end stack-fill 0;
+    width: 18px;
+    height: 17px;
+    icon-size: 10px;
+    margin: 0px;
+    padding: 0px;
+    border: none;
+    background: none;
+}
+
+spinbox > indicator.increase,
+spinbox.constrained > indicator.increase {
+    layout-alignment-order: 0;
+    icon-name: "arrow-up-symbolic";
+    border: none;
+}
+
+spinbox > indicator.decrease,
+spinbox.constrained > indicator.decrease {
+    layout-alignment-order: 1;
+    icon-name: "arrow-down-symbolic";
+    border: none;
+}
+
+spinbox > indicator:hovered,
+spinbox > indicator:pressed,
+spinbox.constrained > indicator:hovered,
+spinbox.constrained > indicator:pressed {
+    height: 17px;
+    margin: 0px;
+    border: none;
+    background: none;
+    icon-color: var(--vinyl-focus);
+}
+
+checkbox,
+radiobutton,
+checkdelegate,
+radiodelegate {
+    spacing: var(--vinyl-spacing);
+}
+
+checkbox,
+radiobutton {
+    height: var(--vinyl-check-size);
+    padding: 2px;
+    text-wrap-mode: no-wrap;
+    text-elide: right;
+}
+
+/* Leave visible space between the circular surface/shadow and its label. */
+radiobutton {
+    spacing: 8px;
+}
+
+checkbox > indicator,
+checkdelegate > indicator,
+radiobutton > indicator,
+radiodelegate > indicator {
+    width: var(--vinyl-check-size);
+    height: var(--vinyl-check-size);
+    inset: 1px;
+    border: none;
+    border-radius: var(--vinyl-check-radius);
+    box-shadow: var(--vinyl-pressed-shadow);
+}
+
+/* Quick StyledRectangle renders the surface at its implicit dimensions.
+ * The Widgets painter instead removes the indicator's inset before drawing.
+ */
+checkbox[display],
+radiobutton[display] {
+    padding-left: 1px;
+    padding-right: 1px;
+}
+
+checkbox[display] > indicator,
+radiobutton[display] > indicator {
+    width: 16px;
+    height: 16px;
+    inset: 0px;
+}
+
+checkbox:hovered > indicator,
+checkdelegate:hovered > indicator,
+radiobutton:hovered > indicator,
+radiodelegate:hovered > indicator {
+    box-shadow: var(--vinyl-hover-shadow);
+}
+
+checkbox:checked > indicator,
+checkdelegate:checked > indicator,
+radiobutton:checked > indicator,
+radiodelegate:checked > indicator {
+    background-color: var(--highlight-color);
+    background-image-mask-color: var(--highlight-text-color);
+    border: none;
+}
+
+radiobutton > indicator,
+radiodelegate > indicator {
+    border-radius: 10px;
+    border: 1px solid modify-color(var(--window-text-color) set-alpha 0.12);
+    box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.65);
+}
+
+/* The native 16px surface has an 8px center mark. Keep the Breeze asset intact
+ * and supply the Vinyl marker independently.
+ */
+radiobutton:checked > indicator,
+radiodelegate:checked > indicator {
+    background-image: url("../../images/radio-marker.svg") mask var(--highlight-text-color);
+    border: 1px solid modify-color(var(--window-text-color) set-alpha 0.12);
+}
+
+radiobutton:visual-focus > indicator,
+radiodelegate:visual-focus > indicator {
+    outline: var(--focus-outline);
+}
+
+checkbox:disabled > indicator,
+checkdelegate:disabled > indicator,
+radiobutton:disabled > indicator,
+radiodelegate:disabled > indicator {
+    background-color: var(--checkable-indicator-disabled-background-color);
+    box-shadow: none;
+}
+
+radiobutton:disabled > indicator,
+radiodelegate:disabled > indicator {
+    outline: none;
+    border-color: var(--checkable-indicator-disabled-border-color);
+}
+
+checkbox:checked:disabled > indicator,
+checkdelegate:checked:disabled > indicator,
+radiobutton:checked:disabled > indicator,
+radiodelegate:checked:disabled > indicator {
+    background-image-mask-color: var(--checkable-indicator-disabled-text-color);
+}

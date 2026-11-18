@@ -3,6 +3,11 @@
 Vinyl is licensed under GPLv2+ and MIT, but some of their subprojects can be subject of
 other licenses.
 
+The Union application style includes GPL-2.0-or-later Vinyl rules and a
+BSD-2-Clause Breeze fallback from KDE Union. See [union/UPSTREAM.md](union/UPSTREAM.md)
+and the individual file notices. Both license texts are included in the style
+package so they accompany redistributed `.unionstyle` archives.
+
 The files are idividually licensed under your SPDX-License-Identifier, otherwise if the identifier 
 is not defined in file, it's license is defined by their package (see metadata.json) or the LICENSE
 files under their parent directories. If none licence information still found, the file is shared

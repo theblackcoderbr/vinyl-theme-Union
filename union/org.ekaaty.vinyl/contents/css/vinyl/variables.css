@@ -1,0 +1,37 @@
+/* SPDX-License-Identifier: GPL-2.0-or-later */
+
+/* Effective defaults from kstyle/vinyl.h and kstyle/vinyl.kcfg.
+ * All colors come from the active KDE color scheme, including disabled colors.
+ * Keep these variables separate from the frozen upstream fallback definitions.
+ */
+:root {
+    --vinyl-radius: 4px;
+    --vinyl-button-radius: 3px;
+    --vinyl-check-radius: 2px;
+    --vinyl-spacing: 4px;
+    --vinyl-padding: 6px;
+    --vinyl-button-padding: 10px;
+    /* Outer sizes include the shadow space in the C++ application style. */
+    --vinyl-button-min-width: 92px;
+    --vinyl-button-height: 41px;
+    --vinyl-icon-button-size: 32px;
+    --vinyl-check-size: 18px;
+    --vinyl-input-padding: 7px;
+    --vinyl-scrollbar-extent: 21px;
+    --vinyl-scrollbar-width: 8px;
+    --vinyl-bar-thickness: 6px;
+    --vinyl-slider-handle-size: 20px;
+    --vinyl-tab-width: 80px;
+    --vinyl-tab-height: 38px;
+
+    --vinyl-focus: custom-color("kcolorscheme", "active", "button", "decoration", "focus");
+    --vinyl-hover: custom-color("kcolorscheme", "active", "button", "decoration", "hover");
+    --vinyl-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.47);
+    --vinyl-hover-shadow: 0px 1px 6px 0px rgba(0, 0, 0, 0.47);
+    --vinyl-pressed-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.47);
+    --vinyl-popup-background: modify-color(var(--button-active-background-color) set-alpha 1.0);
+    --vinyl-menu-background: modify-color(var(--window-background-color) set-alpha 1.0);
+    --vinyl-menu-border: mix(var(--window-background-color), var(--window-text-color), 0.12);
+    --vinyl-popup-border: mix(var(--window-background-color), var(--window-text-color), 0.25);
+    --vinyl-popup-shadow: 0px 4px 18px 0px rgba(0, 0, 0, 0.45);
+}

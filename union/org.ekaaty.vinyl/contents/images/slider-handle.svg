@@ -1,0 +1,5 @@
+<!-- SPDX-License-Identifier: GPL-2.0-or-later -->
+<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
+    <!-- A 14px surface centered in a 20px interaction area. Union tints it. -->
+    <circle cx="10" cy="10" r="7" fill="black"/>
+</svg>

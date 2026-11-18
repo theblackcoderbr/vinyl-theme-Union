@@ -1,0 +1,88 @@
+/* SPDX-License-Identifier: GPL-2.0-or-later */
+
+/* Vinyl's fixed tabs are inset, filled pills over a quiet background. Override
+ * the immutable and end-tab selectors too, otherwise Breeze's accent stripe
+ * and square corners survive in the Qt Quick application-style preview.
+ */
+tabbar,
+tabbar.immutable,
+tabbar[direction] {
+    layout-alignment-horizontal: fill;
+    border: none;
+    background-color: mix(var(--window-background-color), black, 0.1);
+    border-radius: var(--vinyl-radius);
+    height: var(--vinyl-tab-height);
+}
+
+tabbutton,
+tabbutton[direction],
+tabbutton.immutable,
+tabbutton.immutable[direction],
+tabbutton.first[direction],
+tabbutton.last[direction] {
+    width: var(--vinyl-tab-width);
+    height: var(--vinyl-tab-height);
+    padding-left: 8px;
+    padding-right: 8px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    inset: 0px;
+    spacing: 8px;
+    border: none;
+    border-radius: var(--vinyl-radius);
+    background-color: mix(var(--window-background-color), black, 0.1);
+    color: var(--window-text-color);
+}
+
+tabbutton:hovered[direction],
+tabbutton.immutable:hovered[direction] {
+    border: none;
+    background-color: modify-color(var(--vinyl-hover) set-alpha 0.2);
+}
+
+tabbutton:checked,
+tabbutton:highlighted,
+tabbutton:checked[direction],
+tabbutton:highlighted[direction],
+tabbutton.immutable:checked[direction],
+tabbutton.immutable:highlighted[direction],
+tabbutton.first:checked[direction],
+tabbutton.last:checked[direction] {
+    /* Widgets draws only the frame of TabBar. Supply the backdrop as a gutter
+     * around the pill, so the selected surface stays visible in both palettes.
+     */
+    border-left: 5px solid mix(var(--window-background-color), black, 0.1);
+    border-right: 5px solid mix(var(--window-background-color), black, 0.1);
+    border-top: 6px solid mix(var(--window-background-color), black, 0.1);
+    border-bottom: 6px solid mix(var(--window-background-color), black, 0.1);
+    border-radius: 10px;
+    background-color: mix(mix(var(--window-background-color), var(--view-background-color), 0.3), white, 0.078);
+    color: var(--window-text-color);
+    box-shadow: 0px 1px 6px 0px rgba(0, 0, 0, 0.39);
+}
+
+tabbutton:disabled[direction],
+tabbutton.immutable:disabled[direction],
+tabbutton:checked:disabled[direction],
+tabbutton.immutable:checked:disabled[direction] {
+    border: none;
+    background-color: var(--window-disabled-background-color);
+    color: var(--window-disabled-text-color);
+    box-shadow: none;
+}
+
+tabbutton[direction="left"],
+tabbutton[direction="right"],
+tabbutton.immutable[direction="left"],
+tabbutton.immutable[direction="right"] {
+    width: var(--vinyl-tab-height);
+    height: var(--vinyl-tab-width);
+}
+
+tabwidget,
+tabwidget[direction] {
+    padding: 3px;
+    inset: 0px;
+    border: none;
+    background-color: var(--window-background-color);
+}

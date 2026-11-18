@@ -1,0 +1,138 @@
+/* SPDX-License-Identifier: GPL-2.0-or-later */
+
+progressbar,
+slider,
+rangeslider {
+    border: none;
+    border-radius: 3px;
+}
+
+/* Clear the fallback's vertical padding, and keep content size hints compact.
+ * Applications still control the final length.
+ */
+progressbar {
+    padding: 0px;
+    inset: 0px;
+    text-alignment: item end center 0;
+    color: var(--window-text-color);
+}
+
+progressbar.horizontal,
+slider.horizontal,
+rangeslider.horizontal {
+    width: 80px;
+}
+
+progressbar.vertical,
+slider.vertical,
+rangeslider.vertical {
+    height: 80px;
+}
+
+progressbar.horizontal,
+slider.horizontal,
+rangeslider.horizontal {
+    height: var(--vinyl-bar-thickness);
+}
+
+progressbar.vertical,
+slider.vertical,
+rangeslider.vertical {
+    width: var(--vinyl-bar-thickness);
+}
+
+progressbar > track,
+progressbar > chunk,
+slider > fill,
+rangeslider > fill {
+    border: none;
+    border-radius: 3px;
+    background-color: var(--highlight-color);
+}
+
+/* QProgressBar calculates its size hint from seven chunks plus its label.
+ * The Breeze fallback's 32px chunk made the entire preview unnecessarily wide.
+ */
+progressbar > chunk {
+    width: 9px;
+}
+
+slider > handle,
+rangeslider > handle {
+    width: var(--vinyl-slider-handle-size);
+    height: var(--vinyl-slider-handle-size);
+    inset: 0px;
+    border: none;
+    background: none;
+    background-image: url("../../images/slider-handle.svg") mask var(--bar-handle-active-background-color);
+    box-shadow: var(--vinyl-shadow);
+}
+
+/* Quick's Slider background position omits cross-axis padding, while its
+ * handle position includes it. Keep padding zero and reserve the 20px hit area
+ * in the handle itself. The SVG paints the smaller centered surface.
+ */
+slider.horizontal,
+slider.vertical,
+rangeslider.horizontal,
+rangeslider.vertical {
+    padding: 0px;
+}
+
+slider:pressed > handle,
+rangeslider > handle:pressed {
+    background-color: transparent;
+    background-image-mask-color: var(--bar-handle-active-highlight-color);
+}
+
+slider:disabled > handle,
+rangeslider:disabled > handle {
+    border: none;
+    background-color: transparent;
+    background-image-mask-color: var(--bar-handle-disabled-background-color);
+}
+
+slider:disabled > fill,
+rangeslider:disabled > fill,
+progressbar:disabled > track,
+progressbar:disabled > chunk {
+    background-color: var(--bar-track-disabled-background-color);
+}
+
+scrollbar {
+    width: var(--vinyl-scrollbar-extent);
+    height: var(--vinyl-scrollbar-extent);
+    padding: 6px;
+    border: none;
+}
+
+scrollbar.horizontal {
+    border: none;
+    padding-top: 6px;
+    padding-bottom: 7px;
+}
+
+scrollbar.vertical {
+    border: none;
+    padding-left: 6px;
+    padding-right: 7px;
+}
+
+scrollbar > handle {
+    width: var(--vinyl-scrollbar-width);
+    height: var(--vinyl-scrollbar-width);
+    inset: 2px;
+    border: none;
+    border-radius: 4px;
+    background-color: modify-color(var(--window-text-color) set-alpha 0.5);
+}
+
+scrollbar > handle:hovered,
+scrollbar > handle:pressed {
+    border: none;
+    background-color: var(--vinyl-hover);
+}
+
+scrollbar > handle:disabled {
+    background-color: var(--window-disabled-text-color);
+}

@@ -1,0 +1,13 @@
+/* SPDX-License-Identifier: GPL-2.0-or-later */
+
+/* Keep the complete Union 6.8 Breeze control definitions as a fallback. */
+@import "base/style.css";
+
+/* Vinyl metrics and appearance; edit these files to customize the theme. */
+@import "vinyl/variables.css";
+@import "vinyl/buttons.css";
+@import "vinyl/inputs.css";
+@import "vinyl/bars.css";
+@import "vinyl/containers.css";
+@import "vinyl/tabs.css";
+@import "vinyl/delegates.css";

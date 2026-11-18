@@ -1,0 +1,221 @@
+/* SPDX-License-Identifier: GPL-2.0-or-later */
+
+/* Vinyl uses a filled surface and a shadow instead of the Breeze outline.
+ * Padding includes half of the default ButtonSize (8) in vinyl.kcfg.
+ * The painter's 5px background inset leaves room for the shadow.
+ */
+button,
+delaybutton,
+combobox {
+    spacing: var(--vinyl-spacing);
+    padding: var(--vinyl-button-padding);
+    height: var(--vinyl-button-height);
+    inset: 5px;
+    border: none;
+    border-radius: var(--vinyl-button-radius);
+    background-color: var(--button-active-background-color);
+    box-shadow: var(--vinyl-shadow);
+}
+
+button,
+delaybutton {
+    width: var(--vinyl-button-min-width);
+}
+
+/* Qt Widgets does not expose a display attribute for push buttons. Qt Quick
+ * does, so narrow only the explicit icon-only actions used by KCM overlays.
+ */
+button[display="icon-only"],
+delaybutton[display="icon-only"] {
+    width: var(--vinyl-icon-button-size);
+    height: var(--vinyl-icon-button-size);
+    padding: var(--vinyl-padding);
+}
+
+/* Quick includes the background insets in its implicit size; Widgets does not.
+ * Quick exposes display (or role for dialog buttons), unlike QPushButton.
+ * Keep the same 41px outer height without adding the 10px shadow space twice.
+ */
+button[display],
+button[role],
+delaybutton[display] {
+    width: 82px;
+    height: 31px;
+    text-wrap-mode: no-wrap;
+    text-elide: right;
+}
+
+button[display="icon-only"],
+delaybutton[display="icon-only"] {
+    width: 30px;
+    height: 30px;
+}
+
+combobox {
+    /* The Widgets output counts this padding for both text and indicator. */
+    padding-left: 2px;
+    padding-right: 2px;
+    /* Keep the content's outer hint at 41px with the native 17px text height.
+     * Quick still uses its 31px background plus 10px shadow insets.
+     */
+    padding-top: 11px;
+    padding-bottom: 11px;
+    height: 31px;
+}
+
+combobox > indicator {
+    width: 10px;
+    height: 10px;
+}
+
+button:hovered,
+delaybutton:hovered,
+combobox:hovered {
+    border: none;
+    background-color: mix(var(--button-active-background-color), white, 0.05);
+    box-shadow: var(--vinyl-hover-shadow);
+}
+
+button:active-focus,
+button:visual-focus,
+/* Widgets conflates AutoDefault with Highlighted. Only Quick's explicit
+ * display/role attributes distinguish an intentional highlighted button.
+ */
+button[display]:highlighted,
+button[role]:highlighted,
+delaybutton:active-focus,
+delaybutton:visual-focus,
+delaybutton[display]:highlighted {
+    background-color: var(--vinyl-focus);
+    color: var(--highlight-text-color);
+    border: none;
+    outline: none;
+    box-shadow: var(--vinyl-hover-shadow);
+}
+
+button:checked,
+delaybutton:checked {
+    background-color: mix(var(--button-active-background-color), var(--button-active-text-color), 0.2);
+    box-shadow: var(--vinyl-pressed-shadow);
+}
+
+button:pressed,
+delaybutton:pressed,
+combobox:pressed {
+    background-color: mix(var(--vinyl-focus), black, 0.1);
+    color: var(--highlight-text-color);
+    border: none;
+    box-shadow: var(--vinyl-pressed-shadow);
+}
+
+button:disabled,
+button[display]:highlighted:disabled,
+button[role]:highlighted:disabled,
+delaybutton:disabled,
+delaybutton[display]:highlighted:disabled,
+combobox:disabled {
+    color: var(--button-disabled-text-color);
+    background-color: var(--button-disabled-background-color);
+    border: none;
+    outline: none;
+    box-shadow: none;
+}
+
+/* Flat controls retain the layout/indicators from the fallback. */
+button.flat,
+combobox.flat,
+toolbutton {
+    padding: var(--vinyl-padding);
+    spacing: var(--vinyl-spacing);
+    inset: 0px;
+    border-radius: var(--vinyl-radius);
+    border: none;
+    background: none;
+    box-shadow: none;
+}
+
+/* A checked flat button stays visible after the press is released. Like the
+ * native toolButtonColor(), use translucent window text for the resting state.
+ */
+button.flat:checked,
+toolbutton:checked {
+    border: none;
+    background-color: modify-color(var(--window-text-color) set-alpha 0.2);
+    box-shadow: none;
+}
+
+button.flat:hovered,
+combobox.flat:hovered,
+toolbutton:hovered {
+    border: none;
+    background-color: modify-color(var(--vinyl-hover) set-alpha 0.2);
+    box-shadow: none;
+}
+
+button.flat:pressed,
+combobox.flat:pressed,
+toolbutton:pressed {
+    border: none;
+    background-color: modify-color(var(--vinyl-focus) set-alpha 0.2);
+    box-shadow: none;
+}
+
+button.flat:disabled,
+combobox.flat:disabled,
+toolbutton:disabled {
+    background: none;
+    box-shadow: none;
+}
+
+/* Editable comboboxes are input fields, not raised buttons. */
+combobox.editable,
+combobox.flat.editable {
+    padding: var(--vinyl-padding);
+    inset: 0px;
+    border-radius: var(--vinyl-radius);
+    border: 1px solid var(--view-border-color);
+    background-color: var(--view-background-color);
+    color: var(--view-text-color);
+    box-shadow: none;
+}
+
+combobox.editable:hovered,
+combobox.editable:active-focus,
+combobox.flat.editable:hovered,
+combobox.flat.editable:active-focus {
+    border-color: var(--vinyl-focus);
+}
+
+combobox.editable:disabled,
+combobox.flat.editable:disabled {
+    border-color: var(--view-disabled-border-color);
+    background-color: var(--view-disabled-background-color);
+    color: var(--view-disabled-text-color);
+}
+
+/* QWidgetAction rows, including Dolphin's folder colors, use QPushButtons.
+ * Widgets exposes no display attribute, so the regular text-button minimum
+ * makes every icon action 92px wide. Scope the compact minimum to menus.
+ */
+menu button {
+    width: 40px;
+    height: 40px;
+}
+
+menu button.with-menu {
+    /* The Widgets output adds the 20px menu indicator to this minimum. */
+    width: 72px;
+    height: var(--vinyl-button-height);
+}
+
+/* Quick still counts the 10px background insets in its outer size. */
+menu button[display],
+menu button[role] {
+    width: 82px;
+    height: 31px;
+}
+
+menu button[display="icon-only"] {
+    width: 30px;
+    height: 30px;
+}

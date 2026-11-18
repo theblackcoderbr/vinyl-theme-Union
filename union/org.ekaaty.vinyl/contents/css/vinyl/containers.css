@@ -1,0 +1,113 @@
+/* SPDX-License-Identifier: GPL-2.0-or-later */
+
+menu,
+popup,
+dialog,
+tooltip,
+frame,
+groupbox,
+tabwidget {
+    border-radius: var(--vinyl-radius);
+}
+
+/* Context menus need their own opaque surface and a visible edge even when
+ * external window shadows are clipped or unavailable in an output backend.
+ */
+menu,
+popup,
+popup.combobox {
+    background-color: var(--vinyl-popup-background);
+    color: var(--window-text-color);
+    border: 1px solid var(--vinyl-popup-border);
+    box-shadow: var(--vinyl-popup-shadow);
+}
+
+menu {
+    padding: 4px;
+    /* Match Vinyl's window-colored menu, keeping its button-colored embedded
+     * actions distinct. The edge and shadow separate it from the window.
+     */
+    background-color: var(--vinyl-menu-background);
+    border-color: var(--vinyl-menu-border);
+}
+
+menu:disabled,
+popup:disabled,
+popup.combobox:disabled {
+    background-color: var(--window-disabled-background-color);
+    border-color: var(--window-disabled-border-color);
+    color: var(--window-disabled-text-color);
+}
+
+menuitem {
+    padding-left: 9px;
+    padding-right: 5px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    spacing: var(--vinyl-spacing);
+    border-radius: var(--vinyl-radius);
+}
+
+/* MenuItemDrawStrongFocus=true. */
+menuitem:hovered,
+menuitem.with-submenu:highlighted {
+    background-color: var(--highlight-color);
+    color: var(--highlight-text-color);
+    border: none;
+}
+
+menuitem:disabled {
+    background: none;
+    color: var(--window-disabled-text-color);
+    border: none;
+}
+
+menubaritem {
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    border-radius: var(--vinyl-radius);
+}
+
+tooltip {
+    padding: 3px;
+}
+
+/* ToolBarDrawSeparator=false and ToolBarDrawItemSeparator=false. */
+toolbar,
+toolbar.header,
+toolbar.footer {
+    border: none;
+    padding: var(--vinyl-padding);
+    spacing: 0px;
+}
+
+/* Widgets uses separator; Quick uses toolseparator, often in a content item.
+ * Keep standalone ToolSeparators available outside toolbars.
+ */
+toolbar > separator,
+toolbar toolseparator,
+toolbar.header toolseparator,
+toolbar.footer toolseparator,
+applicationheader toolseparator {
+    background: none;
+    border: none;
+}
+
+toolbar > handle {
+    width: 6px;
+    height: 10px;
+}
+
+/* ViewDrawFocusIndicator=false; selection remains visible. */
+itemdelegate:visual-focus,
+itemviewitem:visual-focus,
+treeviewdelegate:visual-focus,
+tableviewdelegate:visual-focus {
+    outline: none;
+}
+
+dockwidget {
+    border: none;
+}

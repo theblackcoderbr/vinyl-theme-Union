@@ -4,6 +4,14 @@ cmake_minimum_required(VERSION 3.16)
 file(READ "${CMAKE_SOURCE_DIR}/VERSION" _VERSION_RAW)
 string(STRIP ${_VERSION_RAW} _VERSION)
 
+# Install data without requiring a compiler, Qt headers, or Extra CMake Modules.
+option(WITH_UNION_ONLY "Install only the Union style and Vinyl color schemes" OFF)
+if(WITH_UNION_ONLY)
+    project(vinyl-union VERSION ${_VERSION} LANGUAGES NONE)
+    add_subdirectory(union)
+    return()
+endif()
+
 project(
     vinyl
     DESCRIPTION "A theme suite for KDE Plasma"
@@ -46,6 +54,11 @@ include(KDEGitCommitHooks)
 include(GtkUpdateIconCache)
 
 option(BUILD_QT6 "Build with Qt6" ON)
+option(WITH_UNION "Install the Vinyl Union application style" ON)
+
+if(WITH_UNION)
+    add_subdirectory(union)
+endif()
 
 set(QT_NO_CREATE_VERSIONLESS_TARGETS ON)
 set(QT_NO_CREATE_VERSIONLESS_FUNCTIONS ON)

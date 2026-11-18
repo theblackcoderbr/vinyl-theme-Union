@@ -1,0 +1,10 @@
+{
+    "input-type": "css",
+    "input-version": 1,
+    "name": "Vinyl (Union)",
+    "description": "Vinyl application style for Qt Widgets and Qt Quick, based on the KDE color scheme.",
+    "version": "6.7.3",
+    "license": "GPL-2.0-or-later AND BSD-2-Clause",
+    "url": "https://github.com/theblackcoderbr/vinyl-theme-Union",
+    "authors": ["Vinyl contributors", "KDE Union contributors"]
+}

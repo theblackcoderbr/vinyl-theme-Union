@@ -9,6 +9,7 @@ pieces of code and graphics work for KDE Plasma 6:
 ![Desktop showing Dolphin, Vinyl Launcher and Filelight in a purple way](.github/pages/img/screenshot0.webp)
 
 - [x] Application style: [vinyl-theme/kstyle](https://github.com/ekaaty/vinyl-theme/tree/main/kstyle/)
+- [x] Union application style (initial CSS port, no theme compilation): [union/](union/README.md)
 - [x] Color schemes: [vinyl-theme/colors](https://github.com/ekaaty/vinyl-theme/tree/main/colors/)
 - [x] Cursor themes: [vinyl-theme/cursors](https://github.com/ekaaty/vinyl-theme/tree/main/cursors/)
 - [x] Firefox themes: [vinyl-theme/mozilla](https://github.com/ekaaty/vinyl-theme/tree/main/mozilla/)
@@ -27,6 +28,22 @@ pieces of code and graphics work for KDE Plasma 6:
 - [ ] Grub2 theme: planned
 
 See [AUTHORS.md](AUTHORS.md) file and sub-project folders for more info.
+
+## Application style without compilation (Union)
+
+With the KDE Union 6.8+ runtime installed, you can use the initial CSS port of
+Vinyl without building the C++ application style:
+
+```sh
+union-styletool install union/org.ekaaty.vinyl
+```
+
+Select **Vinyl (Union)** in Application Style and a Vinyl color scheme in Colors.
+For data-only installation with all color schemes, use
+`cmake -S . -B build/union -DWITH_UNION_ONLY=ON` followed by
+`cmake --install build/union --prefix "$HOME/.local"`.
+See [the Union guide](union/README.md) for configuration, testing, and known
+differences from the C++ implementation.
 
 ## Installing pre-built binaries
 
