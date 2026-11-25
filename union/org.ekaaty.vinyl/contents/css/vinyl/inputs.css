@@ -43,6 +43,7 @@ spinbox.constrained > indicator {
 
 spinbox > indicator.increase,
 spinbox.constrained > indicator.increase {
+    layout-alignment: item end stack-fill 0;
     layout-alignment-order: 0;
     icon-name: "arrow-up-symbolic";
     border: none;
@@ -50,6 +51,7 @@ spinbox.constrained > indicator.increase {
 
 spinbox > indicator.decrease,
 spinbox.constrained > indicator.decrease {
+    layout-alignment: item end stack-fill 1;
     layout-alignment-order: 1;
     icon-name: "arrow-down-symbolic";
     border: none;

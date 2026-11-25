@@ -52,9 +52,11 @@ delaybutton[display="icon-only"] {
 }
 
 combobox {
-    /* The Widgets output counts this padding for both text and indicator. */
-    padding-left: 2px;
-    padding-right: 2px;
+    /* Quick positions content from the control edge, while the background
+     * starts after its 5px shadow inset. Leave 7px inside the painted surface.
+     */
+    padding-left: 12px;
+    padding-right: 12px;
     /* Keep the content's outer hint at 41px with the native 17px text height.
      * Quick still uses its 31px background plus 10px shadow insets.
      */

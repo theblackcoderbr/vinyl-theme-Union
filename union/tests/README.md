@@ -62,6 +62,14 @@ must remain at least 6px, and both checked and unchecked radios must retain an
 edge. Disabled radios must not inherit the focus outline. These property checks
 do not substitute for a GPU screenshot comparison.
 
+## Combo and spinbox geometry
+
+`input-geometry` checks actual Quick ComboBox text/arrow clearance from the
+painted background's shadow insets. It also checks that normal, constrained and
+mirrored SpinBox arrows share one column, stack without overlap and remain
+inside the control. This catches the more specific Breeze increase/decrease
+rules overriding a generic indicator alignment.
+
 ## Footer colors
 
 This test uses real Qt Widgets buttons and the installed Union runtime. It

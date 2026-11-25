@@ -215,3 +215,20 @@ was measured in Quick and the installed workspace KCM. Quick GPU appearance
 still needs desktop confirmation. The Widgets output's missing icon column
 for iconless menu entries remains a known difference; it is reported by the
 menu regression rather than hidden by an equality claim.
+
+## Combo content and spinbox arrow placement
+
+Quick combo text formerly started 2px from the control edge even though its
+painted background started after a 5px inset. Horizontal padding is now 12px,
+leaving 7px inside that surface for text and the dropdown arrow. This padding
+also applies to Widgets; combo width remains an approximation of native Vinyl.
+
+The generic spinbox indicator alignment did not override Breeze's more specific
+increase/decrease selectors, leaving arrows on opposite sides in unconstrained
+Quick controls. Both specific selectors now explicitly use the trailing
+stacked alignment. Measurements confirm shared x coordinates and vertically
+adjacent 18×17px arrow areas in normal, constrained and mirrored controls.
+
+The new `input-geometry` regression and the seven existing checks passed with
+Vinyl Blue Light and Dark on Union 6.8.2. These are live geometry/property
+checks; Quick GPU rendering still needs desktop verification.

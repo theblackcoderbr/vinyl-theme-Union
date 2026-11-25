@@ -47,7 +47,8 @@ if(TARGET Qt6::Quick AND TARGET Qt6::Qml AND TARGET Qt6::QuickControls2)
     add_test(NAME slider-menus COMMAND slider-menus "${CMAKE_CURRENT_SOURCE_DIR}/slider-menus.qml")
     add_test(NAME control-states COMMAND slider-menus "${CMAKE_CURRENT_SOURCE_DIR}/control-states.qml")
     add_test(NAME radio-labels COMMAND slider-menus "${CMAKE_CURRENT_SOURCE_DIR}/radio-labels.qml")
-    set_tests_properties(slider-menus control-states radio-labels PROPERTIES
+    add_test(NAME input-geometry COMMAND slider-menus "${CMAKE_CURRENT_SOURCE_DIR}/input-geometry.qml")
+    set_tests_properties(slider-menus control-states radio-labels input-geometry PROPERTIES
         ENVIRONMENT "QT_QPA_PLATFORM=offscreen;QT_QUICK_BACKEND=software;UNION_STYLE_NAME=org.ekaaty.vinyl"
     )
 endif()
